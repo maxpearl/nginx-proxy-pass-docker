@@ -1,25 +1,25 @@
-# Nginx Proxy Pass
+# Nginx Proxy Pass with Subfilter
 
 A simple container that proxy passes to an external source.
 
-A number of great containers for reverse proxying to containers exist (I'm a fan of [jwilder/nginx-proxy](https://github.com/jwilder/nginx-proxy)) however I couldn't find any that would proxy pass to external sources on the fly.
+A number of great containers for reverse proxying to containers exist (I'm a fan of [jwilder/nginx-proxy](https://github.com/jwilder/nginx-proxy)) however I couldn't find any that would proxy pass to external sources on the fly. In addition, this replaces any content links containing the source URL with the host URL.
 
 Simply run:
 
 ```bash
-docker run -d -p 80:80 -e HTTP_PROTOCOL=<protocol> -e TARGET_SERVER=<proxy location> guysoft/nginx-proxy-pass
+docker run -d -p 80:80 -e HTTP_PROTOCOL=<protocol> -e TARGET_SERVER=<proxy location> maxpearl/nginx-proxy-pass
 ```
 
 For example, want to proxy everything to google? WHY NOT?!
 
 ```bash
-docker run -d -p 80:80 -e HTTP_PROTOCOL=https -e TARGET_SERVER=google.com guysoft/nginx-proxy-pass
+docker run -d -p 80:80 -e HTTP_PROTOCOL=https -e TARGET_SERVER=google.com maxpearl/nginx-proxy-pass
 ```
 
 Or maybe another server on your network:
 
 ```bash
-docker run -d -p 80:80 -e HTTP_PROTOCOL=http -e TARGET_SERVER=192.168.8.15:8080 guysoft/nginx-proxy-pass
+docker run -d -p 80:80 -e HTTP_PROTOCOL=http -e TARGET_SERVER=192.168.8.15:8080 maxpearl/nginx-proxy-pass
 ```
 
 ## Using paths

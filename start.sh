@@ -28,7 +28,7 @@ if [ ! -z ${PARSED_PATH} ] && [ ${FILTER_PATH} -eq 1 ]; then
 else
   /bin/sed -i "s,<filter_block>,," ${CONF_FILE}
 fi;
-/bin/sed -i "s,<proxy_pass_protocol_placeholder>,${HTTP_PROTOCOL}," ${CONF_FILE}
+/bin/sed -i "s,<proxy_pass_protocol_placeholder>,${HTTP_PROTOCOL},g" ${CONF_FILE}
 /bin/sed -i "s,<proxy_pass_placeholder>,${TARGET_SERVER}," ${CONF_FILE}
 /bin/sed -i "s,<host_placeholder>,${HOST_SERVER}," ${CONF_FILE}
 
